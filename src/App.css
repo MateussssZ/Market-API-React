@@ -1,0 +1,150 @@
+
+/* Основные стили */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  color-scheme: light dark;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+
+.sidebar {
+  width: 250px;
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar h2{
+  color: white;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+
+.loading {
+  display: inline-block;
+  width: 16px;
+  border: 2px solid rgba(0,0,0,.1);
+  border-radius: 50%;
+  border-top-color: #3498db;
+  animation: spin 1s ease-in-out infinite;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error {
+  color: #e74c3c;
+  margin-top: 10px;
+}
+
+/* Стили для списка валют */
+.currency-list {
+  margin-top: 15px;
+}
+
+.currency-item {
+  padding: 10px;
+  border-bottom: 1px solid #34495e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Стили для выбора биржи */
+
+select, input, button {
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #2c3e50;
+}
+button {
+  font-weight: 500;
+  font-family: inherit;
+  color: white;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+button:disabled {
+  background-color: #345372;
+  cursor: not-allowed;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+@media (min-width: 768px) {
+  .app-container {
+    flex-direction: row; /* На десктопах возвращаем горизонтальное расположение */
+  }
+  
+  .sidebar {
+    width: 250px; /* Фиксированная ширина на десктопах */
+    min-height: 100vh; /* На всю высоту */
+  }
+  
+  .main-content {
+    width: calc(100% - 250px); /* Оставшееся пространство */
+  }
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    position: relative; /* Убираем фиксированное позиционирование */
+    z-index: 1; /* Убедимся, что сайдбар над контентом */
+  }
+  
+  .currency-list {
+    max-height: 200px; /* Уменьшаем высоту на мобильных */
+  }
+  
+  .exchange-selector, .stock-info {
+    margin-top: 20px; /* Добавляем отступы между блоками */
+  }
+}
+
+.mobile-menu-button {
+  display: none; /* По умолчанию скрыта */
+  padding: 10px;
+  background: #3498db;
+  color: white;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Скрытие сайдбара на мобильных */
+.hidden-on-mobile {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mobile-menu-button {
+    display: block; /* Показываем только на мобильных */
+  }
+}
